@@ -26,17 +26,6 @@ app.post("/hdfcWebhook", async (req, res) => {
 
 
   try {
-    // const processingTransactions = await db.onRamptransactions.findFirst({
-    //   where: {
-    //     token: paymentInformation.token,
-    //     status: "Proccesing",
-    //   },
-    // });
-    // if (!processingTransactions) {
-    //   return res.status(404).json({
-    //     message: "NO Transactions are Left to process",
-    //   });
-    // }\
     const t = await db.onRamptransactions.findFirst({
       where:{
         token:paymentInformation.token

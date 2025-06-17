@@ -8,8 +8,7 @@ import { TextInput } from "@repo/ui/textInput";
 import CreateOnRampTractions from "../app/lib/actions/onRampTransactions";
 import { motion, AnimatePresence } from "framer-motion";
 import {  FaTimesCircle, FaSpinner } from "react-icons/fa";
-// import Confetti from "react-confetti";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import successAnimation from "../public/animations/success.json";
 import { useRef } from "react";
@@ -20,9 +19,7 @@ const SUPPORTED_BANKS = [
 ];
 
 export const AddMoney = () => {
-  // const [redirectUrl, setRedirectUrl] = useState(
-  //   SUPPORTED_BANKS[0]?.redirectUrl || ""
-  // );
+
   const [amount, setAmount] = useState("");
   const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name || "");
   const playerRef = useRef<any>(null);
@@ -30,15 +27,7 @@ export const AddMoney = () => {
   const [status, setStatus] = useState<
     "idle" | "processing" | "success" | "failed"
   >("idle");
-  // const [showConfetti, setShowConfetti] = useState(false);
 
-  // useEffect(() => {
-  //   if (status === "success") {
-  //     setShowConfetti(true);
-  //     const timer = setTimeout(() => setShowConfetti(false), 2500);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [status]);
   const handleAddMoney = async () => {
     setStatus("processing");
     try {
@@ -54,8 +43,6 @@ export const AddMoney = () => {
     } catch {
       setStatus("failed");
     }
-
-    // setTimeout(() => setStatus("idle"), 3000); // auto-hide modal after 3s
   };
 
   return (
@@ -117,10 +104,6 @@ export const AddMoney = () => {
               )}
               {status === "success" && (
                 <>
-                  {/* {showConfetti && (
-                    <Confetti numberOfPieces={400} recycle={false} />
-                  )} */}
-                  {/* <FaCheckCircle className="text-green-500 text-5xl animate-bounce" /> */}
                   <Player
                     ref={playerRef}
                     autoplay

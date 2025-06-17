@@ -22,6 +22,8 @@ model User{
   phonenumber  String @unique
   balance Balance[]
   onRamptransactions onRamptransactions[]
+  recivcetransactions P2PTransaction[] @relation("ReceivedTransactions")
+  sendtransactions P2PTransaction[] @relation("SentTransactions")
 }
 
 model Merchant{
@@ -49,6 +51,16 @@ model Balance{
   locked Int
   user User @relation(fields: [userId],references: [id])
 }
+model P2PTransaction {
+  id         Int   @id @default(autoincrement())
+  senderID   Int
+  reciverID  Int
+  amount     Int
+  sender     User     @relation("SentTransactions", fields: [senderID], references: [id])
+  receiver   User     @relation("ReceivedTransactions", fields: [reciverID], references: [id])
+  createdAt  DateTime @default(now())
+}
+
 enum Auth_type{
   GOOGLE
   GITHUB

@@ -30,9 +30,5 @@ A web application for seamless transactions.
 - **Frontend:** React, Tailwind CSS  
 - **Backend:** Node.js, Express, Psql   
 - **Auth:** JWT , NextAuth 
-
-## TODO:
-- [ ] Add Recoil and NextAuth.
-- [ ] Complete the Frontend Login Page.
 ---
 
