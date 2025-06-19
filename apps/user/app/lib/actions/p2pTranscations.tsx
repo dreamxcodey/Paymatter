@@ -33,7 +33,6 @@ export async function P2Ptransactions(phone_number: number, amount: number) {
     });
 
     if (!userBalance || userBalance.amount < amount) {
-      // Instead of returning, throw error to rollback transaction
       throw new Error("Balance is too Low");
     }
 

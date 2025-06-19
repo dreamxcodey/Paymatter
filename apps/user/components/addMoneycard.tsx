@@ -7,8 +7,8 @@ import { Select } from "@repo/ui/select";
 import { TextInput } from "@repo/ui/textInput";
 import CreateOnRampTractions from "../app/lib/actions/onRampTransactions";
 import { motion, AnimatePresence } from "framer-motion";
-import {  FaTimesCircle, FaSpinner } from "react-icons/fa";
-import {  useState } from "react";
+import { FaTimesCircle, FaSpinner } from "react-icons/fa";
+import { useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import successAnimation from "../public/animations/success.json";
 import { useRef } from "react";
@@ -47,7 +47,7 @@ export const AddMoney = () => {
 
   return (
     <Card title="Add Money">
-      <div className="w-full">
+      <div className="w-full border-none">
         <TextInput
           label="Amount"
           placeholder="Amount"

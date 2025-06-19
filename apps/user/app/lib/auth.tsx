@@ -17,10 +17,8 @@ export const authOptions = {
         password: { label: "Password", type: "password", required: true },
       },
       async authorize(credentials: any) {
-        // console.log("🔐 Authorize called with credentials:", credentials);
 
         if (!credentials) {
-          // console.error("❌ No credentials provided");
           return null;
         }
 
@@ -34,17 +32,14 @@ export const authOptions = {
           });
 
           if (!user) {
-            // console.warn("⚠️ No user found for:", login);
             return null;
           }
 
           const passwordMatch = await bcrypt.compare(password, user.password);
           if (!passwordMatch) {
-            // console.warn("⚠️ Invalid password for user:", login);
             return null;
           }
 
-          // console.log("✅ User authenticated:", user.username || user.phonenumber);
 
           return {
             id: user.id.toString(),
@@ -67,18 +62,15 @@ export const authOptions = {
 
   callbacks: {
     async jwt({ token, user }) {
-      // console.log("🔄 JWT callback - token before:", token, "user:", user);
       if (user) {
         token.id = user.id;
         token.username = user.username;
         token.phonenumber = user.phonenumber;
       }
-      // console.log("🔄 JWT callback - token after:", token);
       return token;
     },
 
     async session({ session, token }) {
-      // console.log("🪪 Session callback - token:", token);
       if (token) {
         session.user = {
           ...session.user,
@@ -87,7 +79,6 @@ export const authOptions = {
           phonenumber: token.phonenumber,
         };
       }
-      // console.log("🪪 Session callback - session after:", session);
       return session;
     },
   },

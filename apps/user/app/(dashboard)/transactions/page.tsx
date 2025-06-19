@@ -1,8 +1,9 @@
-
+import { primsa } from "@repo/db/client"
 
 export default function TransactionPage() {
-  return(
-    <div>Transaction Page</div>
-  )
+  const user = await primsa.
+    return(
+      <div></div>
+    )
 
 }

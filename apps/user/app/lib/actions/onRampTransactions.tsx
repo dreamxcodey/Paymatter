@@ -27,7 +27,7 @@ export default async function CreateOnRampTractions(
     },
   });
   try {
-     const response = await fetch("http://localhost:3003/hdfcWebhook", {
+    const response = await fetch("http://localhost:3003/hdfcWebhook", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,9 +42,6 @@ export default async function CreateOnRampTractions(
     const json = await response.json();
     console.log("Webhook response:", json);
 
-    // if (!response.ok) {
-    //   throw new Error("Webhook failed!");
-    // }
   } catch (e) {
     console.error("Error calling webhook:", e);
   }
